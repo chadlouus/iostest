@@ -9,7 +9,8 @@
 import XCTest
 
 class ui_tests_exampleUITests: XCTestCase {
-        
+    var app: XCUIApplication!
+    var launched = 0
     override func setUp() {
         super.setUp()
         
@@ -18,7 +19,12 @@ class ui_tests_exampleUITests: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
+        if self.launched == 0 {
+            print("self.launched \(self.launched)")
+            self.launched = 1
+            XCUIApplication().launch()
+            app = XCUIApplication()
+        }
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
@@ -31,7 +37,6 @@ class ui_tests_exampleUITests: XCTestCase {
     func testExistance() {
 
         
-        let app = XCUIApplication()
         app.tables.staticTexts["Testing if element exists"].tap()
         
         let label = app.staticTexts["Hello world"]
@@ -50,7 +55,7 @@ class ui_tests_exampleUITests: XCTestCase {
     
     func testEllipseExistance() {
         
-        let app = XCUIApplication()
+        //let app = XCUIApplication()
         app.tables.staticTexts["Testing if text with an ellipse exists"].tap()
         
         let label = app.staticTexts["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."]
@@ -62,7 +67,7 @@ class ui_tests_exampleUITests: XCTestCase {
     
     func testAppearance() {
         
-        let app = XCUIApplication()
+        //let app = XCUIApplication()
         app.tables.staticTexts["Waiting for an element to appear"].tap()
 
         let button = app.buttons["Hello world!"]
@@ -81,7 +86,7 @@ class ui_tests_exampleUITests: XCTestCase {
     
     func testInteractions() {
         
-        let app = XCUIApplication()
+        //let app = XCUIApplication()
 
         app.tables.staticTexts["Interactions"].tap()
 
@@ -92,7 +97,7 @@ class ui_tests_exampleUITests: XCTestCase {
         app.sliders.element.adjust(toNormalizedSliderPosition: 1)
         app.sliders.element.adjust(toNormalizedSliderPosition: 0.5)
         
-        let app2 = app
+        let app2 = app!
         app2.buttons["A"].tap()
         app2.buttons["B"].tap()
         app2.buttons["C"].tap()
