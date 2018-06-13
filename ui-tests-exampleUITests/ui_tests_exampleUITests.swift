@@ -34,6 +34,42 @@ class ui_tests_exampleUITests: XCTestCase {
         super.tearDown()
     }
     
+    func testRecorder1() {
+        
+        let tablesQuery = app.tables
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Testing if text with an ellipse exists"]/*[[".cells.staticTexts[\"Testing if text with an ellipse exists\"]",".staticTexts[\"Testing if text with an ellipse exists\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.staticTexts["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."].tap()
+        app.navigationBars["UIView"].buttons["Root View Controller"].tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Waiting for an element to appear"]/*[[".cells.staticTexts[\"Waiting for an element to appear\"]",".staticTexts[\"Waiting for an element to appear\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.otherElements.containing(.navigationBar, identifier:"ui_tests_example.AppearanceTestView").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.tap()
+        app.buttons["Hello world!"].tap()
+        app.navigationBars["ui_tests_example.AppearanceTestView"].buttons["Root View Controller"].tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Interactions"]/*[[".cells.staticTexts[\"Interactions\"]",".staticTexts[\"Interactions\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let slider = app.sliders["50%"]
+        slider.tap()
+        slider.swipeLeft()
+        app.sliders["29%"].swipeRight()
+        app.sliders["75%"].swipeRight()
+        app.sliders["85%"].tap()
+        app.sliders["84%"].tap()
+        app.sliders["86%"].tap()
+        
+        let typeTextHereTextField = app.textFields["type text here"]
+        typeTextHereTextField.tap()
+        typeTextHereTextField.typeText("I'm typing\r")
+        
+        let app2 = app!
+        app2/*@START_MENU_TOKEN@*/.buttons["A"]/*[[".segmentedControls.buttons[\"A\"]",".buttons[\"A\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app2/*@START_MENU_TOKEN@*/.buttons["Second"]/*[[".segmentedControls.buttons[\"Second\"]",".buttons[\"Second\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app2/*@START_MENU_TOKEN@*/.buttons["First"]/*[[".segmentedControls.buttons[\"First\"]",".buttons[\"First\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let datePickersQuery = app.datePickers
+        datePickersQuery.pickerWheels["June"].swipeUp()
+        datePickersQuery.pickerWheels["13"].swipeDown()
+        
+    }
+    
     func testExistance() {
 
         
