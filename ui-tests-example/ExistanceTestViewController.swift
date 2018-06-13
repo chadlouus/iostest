@@ -10,11 +10,17 @@ import UIKit
 
 class ExistanceTestViewController: UIViewController {
     
-    @IBAction func showLabel(sender: AnyObject) {
-        let label = UILabel(frame: CGRectMake(0,0,100,50))
+    @IBAction func myAction(_ sender: Any) {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50)) //CGRectMake(0,0,100,50))
         label.text = "Hello world"
         label.center = self.view.center
         self.view.addSubview(label)
     }
+//    @IBAction func showLabel(sender: AnyObject) {
+//        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50)) //CGRectMake(0,0,100,50))
+//        label.text = "Hello world"
+//        label.center = self.view.center
+//        self.view.addSubview(label)
+//    }
     
 }

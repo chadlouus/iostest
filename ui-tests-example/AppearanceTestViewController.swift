@@ -10,16 +10,16 @@ import UIKit
 
 class AppearanceTestViewController: UIViewController {
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.performSelector("showButton", withObject: nil, afterDelay: 5)
+        self.perform(#selector(AppearanceTestViewController.showButton), with: nil, afterDelay: 5)
     }
     
-    dynamic func showButton() {
-        let button = UIButton(type: .System)
-        button.frame = CGRectMake(0, 0, 200, 40)
+    @objc func showButton() {
+        let button = UIButton(type: .system)
+        button.frame = CGRect(x: 0, y: 0, width: 200, height: 40) //CGRectMake(0, 0, 200, 40)
         button.center = self.view.center
-        button.setTitle("Hello world!", forState: .Normal)
+        button.setTitle("Hello world!", for: .normal)
         self.view.addSubview(button)
     }
     

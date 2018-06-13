@@ -38,10 +38,10 @@ class ui_tests_exampleUITests: XCTestCase {
         XCTAssertFalse(label.exists)
         
         let exists = NSPredicate(format: "exists == true")
-        expectationForPredicate(exists, evaluatedWithObject: label, handler: nil)
+        expectation(for: exists, evaluatedWith: label, handler: nil)
         
         app.buttons["Show the label"].tap()
-        waitForExpectationsWithTimeout(5, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
         XCTAssert(label.exists)
         
         app.navigationBars["ui_tests_example.ExistanceTestView"].buttons["Root View Controller"].tap()
@@ -69,9 +69,9 @@ class ui_tests_exampleUITests: XCTestCase {
         XCTAssertFalse(button.exists)
         
         let exists = NSPredicate(format: "exists == true")
-        expectationForPredicate(exists, evaluatedWithObject: button, handler: nil)
+        expectation(for: exists, evaluatedWith: button, handler: nil)
         
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForExpectations(timeout: 6, handler: nil)
         XCTAssert(button.exists)
 
         
@@ -89,8 +89,8 @@ class ui_tests_exampleUITests: XCTestCase {
         typeTextHereTextField.tap()
         typeTextHereTextField.typeText("hello world, this is test")
 
-        app.sliders.element.adjustToNormalizedSliderPosition(1)
-        app.sliders.element.adjustToNormalizedSliderPosition(0.5)
+        app.sliders.element.adjust(toNormalizedSliderPosition: 1)
+        app.sliders.element.adjust(toNormalizedSliderPosition: 0.5)
         
         let app2 = app
         app2.buttons["A"].tap()
@@ -98,9 +98,9 @@ class ui_tests_exampleUITests: XCTestCase {
         app2.buttons["C"].tap()
         
         // watchout for localization!
-        app.pickerWheels.elementBoundByIndex(0).adjustToPickerWheelValue("June")
-        app.pickerWheels.elementBoundByIndex(1).adjustToPickerWheelValue("13")
-        app.pickerWheels.elementBoundByIndex(2).adjustToPickerWheelValue("1990")
+        app.pickerWheels.element(boundBy: 0).adjust(toPickerWheelValue: "June")
+        app.pickerWheels.element(boundBy: 1).adjust(toPickerWheelValue: "13")
+        app.pickerWheels.element(boundBy: 2).adjust(toPickerWheelValue: "1990")
         app.navigationBars["UIView"].buttons["Root View Controller"].tap()
         
     }
