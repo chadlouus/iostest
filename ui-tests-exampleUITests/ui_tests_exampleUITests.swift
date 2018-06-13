@@ -42,18 +42,19 @@ class ui_tests_exampleUITests: XCTestCase {
         app.navigationBars["UIView"].buttons["Root View Controller"].tap()
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Waiting for an element to appear"]/*[[".cells.staticTexts[\"Waiting for an element to appear\"]",".staticTexts[\"Waiting for an element to appear\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.otherElements.containing(.navigationBar, identifier:"ui_tests_example.AppearanceTestView").children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.tap()
-        app.buttons["Hello world!"].tap()
+        //app.buttons["Hello world!"].tap()
         app.navigationBars["ui_tests_example.AppearanceTestView"].buttons["Root View Controller"].tap()
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Interactions"]/*[[".cells.staticTexts[\"Interactions\"]",".staticTexts[\"Interactions\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
-        let slider = app.sliders["50%"]
+        let slider = app.sliders.element //app.sliders["50%"]
         slider.tap()
         slider.swipeLeft()
-        app.sliders["29%"].swipeRight()
-        app.sliders["75%"].swipeRight()
-        app.sliders["85%"].tap()
-        app.sliders["84%"].tap()
-        app.sliders["86%"].tap()
+        app.sliders.element.adjust(toNormalizedSliderPosition: 1)
+        slider.swipeRight()
+        slider.swipeRight()
+        slider.tap()
+        slider.tap()
+        slider.tap()
         
         let typeTextHereTextField = app.textFields["type text here"]
         typeTextHereTextField.tap()
